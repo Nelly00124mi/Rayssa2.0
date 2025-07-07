@@ -9,3 +9,6 @@ mensagem = st.chat_input("Digite suas notas a serem armazenadas aqui...")
 # Verifica se o usuário enviou algo
 if mensagem:
     st.write(f"Você : {mensagem}")
+
+    st.button("Balões")
+    st.balloons
