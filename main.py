@@ -26,4 +26,11 @@ if entrada:
     with st.chat_message("user"):
         st.markdown(entrada)
 
-    
+    # Resposta automática (simples)
+    resposta = f"Você disse: '{entrada}'. Que interessante!"
+    st.session_state.mensagens.append({"autor": "assistant", "texto": resposta})
+
+    # Mostrar resposta
+    with st.chat_message("assistant"):
+        st.markdown(resposta)
+
