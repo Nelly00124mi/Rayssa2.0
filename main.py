@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 
 st.title("Bloco de notas🔠")
-st.balloons()
 st.snow()
 
 # Exibe o campo de entrada de chat
