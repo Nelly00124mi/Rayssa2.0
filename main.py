@@ -1,12 +1,29 @@
 import streamlit as st
 import pandas as pd
 
-st.title("Perguntas sobre você🐹")
+# Configurações da página
+st.set_page_config(page_title="Chat Online", layout="centered")
+st.title("💬 Chat Simples com Streamlit")
 
-# Exibe o campo de entrada de chat
-mensagem = st.chat_input("Digite sua mensagem aqui...")
+# Inicializar o histórico se ainda não existir
+if "mensagens" not in st.session_state:
+    st.session_state.mensagens = []
 
-# Verifica se o usuário enviou algo
-if mensagem:
-    st.write(f"Você : {mensagem}")
+# Exibir as mensagens anteriores
+for msg in st.session_state.mensagens:
+    with st.chat_message(msg["autor"]):
+        st.markdown(msg["texto"])
 
+# Entrada de mensagem
+entrada = st.chat_input("Digite sua mensagem...")
+
+# Processar nova mensagem
+if entrada:
+    # Adicionar mensagem do usuário ao histórico
+    st.session_state.mensagens.append({"autor": "user", "texto": entrada})
+    
+    # Mostrar mensagem enviada
+    with st.chat_message("user"):
+        st.markdown(entrada)
+
+    
